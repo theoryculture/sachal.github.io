@@ -1,0 +1,66 @@
+body {
+    background: #121212;
+    color: #eaeaea;
+    font-family: Georgia, serif;
+    margin: 0;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #6a0dad;
+    object-fit: cover;
+}
+
+.tagline {
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* GRID LAYOUT */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* CARDS */
+.card {
+    display: block;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #6a0dad;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+/* LINKS */
+a {
+    color: #8ab4f8;
+}
+
+a:hover {
+    text-decoration: underline;
+}
