@@ -102,3 +102,55 @@ a:hover {
     border-radius: 12px;
     border: 1px solid #333;
 }
+
+/* Container for the graph */
+.dodecahedron {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* General graph edges */
+.dodecahedron line {
+    stroke: #555;
+    stroke-width: 2;
+}
+
+/* Nodes (vertices) */
+.dodecahedron circle {
+    fill: #eaeaea;
+    stroke: #6a0dad;
+    stroke-width: 2;
+}
+
+/* Hamiltonian cycle edges (highlighted path) */
+.cycle-edge {
+    stroke: #6a0dad;
+    stroke-width: 3;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw-cycle 2.5s ease forwards;
+}
+
+/* Animation: draw the cycle */
+@keyframes draw-cycle {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Optional: slight pulse effect for emphasis */
+.cycle-edge {
+    animation:
+        draw-cycle 2.5s ease forwards,
+        pulse 2s ease-in-out infinite 2.5s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        stroke: #6a0dad;
+    }
+    50% {
+        stroke: #9b4dff;
+    }
+}
