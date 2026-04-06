@@ -30,77 +30,76 @@
 </div>
 
 <div class="dodecahedron">
-
 <svg viewBox="0 0 400 400">
 
-    <!-- ===== OUTER 5-CYCLE ===== -->
-    <circle cx="200" cy="50" r="4"/>
-    <circle cx="300" cy="120" r="4"/>
-    <circle cx="260" cy="260" r="4"/>
-    <circle cx="140" cy="260" r="4"/>
-    <circle cx="100" cy="120" r="4"/>
+<!-- ===== OUTER PENTAGON ===== -->
+<circle cx="200" cy="60" r="4"/>
+<circle cx="285" cy="120" r="4"/>
+<circle cx="250" cy="250" r="4"/>
+<circle cx="150" cy="250" r="4"/>
+<circle cx="115" cy="120" r="4"/>
 
-    <!-- edges -->
-    <line class="edge" x1="200" y1="50" x2="300" y2="120"/>
-    <line class="edge" x1="300" y1="120" x2="260" y2="260"/>
-    <line class="edge" x1="260" y1="260" x2="140" y2="260"/>
-    <line class="edge" x1="140" y1="260" x2="100" y2="120"/>
-    <line class="edge" x1="100" y1="120" x2="200" y2="50"/>
+<!-- edges -->
+<line class="edge" x1="200" y1="60" x2="285" y2="120"/>
+<line class="edge" x1="285" y1="120" x2="250" y2="250"/>
+<line class="edge" x1="250" y1="250" x2="150" y2="250"/>
+<line class="edge" x1="150" y1="250" x2="115" y2="120"/>
+<line class="edge" x1="115" y1="120" x2="200" y2="60"/>
 
-    <!-- ===== MIDDLE 10-CYCLE ===== -->
-    <circle cx="200" cy="90" r="4"/>
-    <circle cx="260" cy="110" r="4"/>
-    <circle cx="290" cy="170" r="4"/>
-    <circle cx="270" cy="230" r="4"/>
-    <circle cx="220" cy="270" r="4"/>
-    <circle cx="180" cy="270" r="4"/>
-    <circle cx="130" cy="230" r="4"/>
-    <circle cx="110" cy="170" r="4"/>
-    <circle cx="140" cy="110" r="4"/>
-    <circle cx="200" cy="140" r="4"/>
+<!-- ===== MIDDLE 10-CYCLE ===== -->
+<circle cx="200" cy="100" r="4"/>
+<circle cx="240" cy="110" r="4"/>
+<circle cx="270" cy="150" r="4"/>
+<circle cx="270" cy="210" r="4"/>
+<circle cx="240" cy="240" r="4"/>
+<circle cx="200" cy="260" r="4"/>
+<circle cx="160" cy="240" r="4"/>
+<circle cx="130" cy="210" r="4"/>
+<circle cx="130" cy="150" r="4"/>
+<circle cx="160" cy="110" r="4"/>
 
-    <!-- edges -->
-    <line class="edge" x1="200" y1="90" x2="260" y2="110"/>
-    <line class="edge" x1="260" y1="110" x2="290" y2="170"/>
-    <line class="edge" x1="290" y1="170" x2="270" y2="230"/>
-    <line class="edge" x1="270" y1="230" x2="220" y2="270"/>
-    <line class="edge" x1="220" y1="270" x2="180" y2="270"/>
-    <line class="edge" x1="180" y1="270" x2="130" y2="230"/>
-    <line class="edge" x1="130" y1="230" x2="110" y2="170"/>
-    <line class="edge" x1="110" y1="170" x2="140" y2="110"/>
-    <line class="edge" x1="140" y1="110" x2="200" y2="90"/>
-    <line class="edge" x1="200" y1="90" x2="200" y2="140"/>
+<!-- cycle -->
+<line class="edge" x1="200" y1="100" x2="240" y2="110"/>
+<line class="edge" x1="240" y1="110" x2="270" y2="150"/>
+<line class="edge" x1="270" y1="150" x2="270" y2="210"/>
+<line class="edge" x1="270" y1="210" x2="240" y2="240"/>
+<line class="edge" x1="240" y1="240" x2="200" y2="260"/>
+<line class="edge" x1="200" y1="260" x2="160" y2="240"/>
+<line class="edge" x1="160" y1="240" x2="130" y2="210"/>
+<line class="edge" x1="130" y1="210" x2="130" y2="150"/>
+<line class="edge" x1="130" y1="150" x2="160" y2="110"/>
+<line class="edge" x1="160" y1="110" x2="200" y2="100"/>
 
-    <!-- ===== INNER 5-CYCLE ===== -->
-    <circle cx="200" cy="160" r="4"/>
-    <circle cx="240" cy="190" r="4"/>
-    <circle cx="220" cy="230" r="4"/>
-    <circle cx="180" cy="230" r="4"/>
-    <circle cx="160" cy="190" r="4"/>
+<!-- ===== INNER PENTAGON ===== -->
+<circle cx="200" cy="150" r="4"/>
+<circle cx="230" cy="180" r="4"/>
+<circle cx="215" cy="220" r="4"/>
+<circle cx="185" cy="220" r="4"/>
+<circle cx="170" cy="180" r="4"/>
 
-    <!-- edges -->
-    <line class="edge" x1="200" y1="160" x2="240" y2="190"/>
-    <line class="edge" x1="240" y1="190" x2="220" y2="230"/>
-    <line class="edge" x1="220" y1="230" x2="180" y2="230"/>
-    <line class="edge" x1="180" y1="230" x2="160" y2="190"/>
-    <line class="edge" x1="160" y1="190" x2="200" y2="160"/>
+<!-- edges -->
+<line class="edge" x1="200" y1="150" x2="230" y2="180"/>
+<line class="edge" x1="230" y1="180" x2="215" y2="220"/>
+<line class="edge" x1="215" y1="220" x2="185" y2="220"/>
+<line class="edge" x1="185" y1="220" x2="170" y2="180"/>
+<line class="edge" x1="170" y1="180" x2="200" y2="150"/>
 
-    <!-- ===== OUTER → MIDDLE CONNECTIONS (alternating) ===== -->
-    <line class="edge" x1="200" y1="50" x2="200" y2="90"/>
-    <line class="edge" x1="300" y1="120" x2="260" y2="110"/>
-    <line class="edge" x1="260" y1="260" x2="270" y2="230"/>
-    <line class="edge" x1="140" y1="260" x2="130" y2="230"/>
-    <line class="edge" x1="100" y1="120" x2="140" y2="110"/>
+<!-- ===== OUTER → MIDDLE (alternating) ===== -->
+<line class="edge" x1="200" y1="60" x2="200" y2="100"/>
+<line class="edge" x1="285" y1="120" x2="240" y2="110"/>
+<line class="edge" x1="250" y1="250" x2="240" y2="240"/>
+<line class="edge" x1="150" y1="250" x2="160" y2="240"/>
+<line class="edge" x1="115" y1="120" x2="160" y2="110"/>
 
-    <!-- ===== MIDDLE → INNER CONNECTIONS (remaining vertices) ===== -->
-    <line class="edge" x1="290" y1="170" x2="240" y2="190"/>
-    <line class="edge" x1="220" y1="270" x2="220" y2="230"/>
-    <line class="edge" x1="180" y1="270" x2="180" y2="230"/>
-    <line class="edge" x1="110" y1="170" x2="160" y2="190"/>
-    <line class="edge" x1="200" y1="140" x2="200" y2="160"/>
+<!-- ===== MIDDLE → INNER (remaining alternating) ===== -->
+<line class="edge" x1="270" y1="150" x2="230" y2="180"/>
+<line class="edge" x1="270" y1="210" x2="215" y2="220"/>
+<line class="edge" x1="200" y1="260" x2="185" y2="220"/>
+<line class="edge" x1="130" y1="210" x2="170" y2="180"/>
+<line class="edge" x1="130" y1="150" x2="200" y2="150"/>
 
 </svg>
-
 </div>
+
 </body>
 </html>
