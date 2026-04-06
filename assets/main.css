@@ -18,8 +18,8 @@ body {
 }
 
 .profile-img {
-    width: 180px;   /* increased from 150px */
-    height: 180px;  /* increased from 150px */
+    width: 200px;   /* increased from 150px */
+    height: 200px;  /* increased from 150px */
     border-radius: 50%;
     border: 3px solid #6a0dad;
     object-fit: cover;
