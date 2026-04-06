@@ -70,3 +70,35 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
+/* CONTENT SECTION */
+.content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+/* LIST */
+.tutoring-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tutoring-list li {
+    margin: 10px 0;
+}
+
+/* POSTER */
+.poster {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+.poster-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
