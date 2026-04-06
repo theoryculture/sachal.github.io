@@ -1,8 +1,14 @@
+/* GLOBAL FIX */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #121212;
     color: #eaeaea;
     font-family: Georgia, serif;
     margin: 0;
+    overflow-x: hidden;
 }
 
 /* HERO SECTION */
@@ -12,8 +18,8 @@ body {
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 180px;   /* increased from 150px */
+    height: 180px;  /* increased from 150px */
     border-radius: 50%;
     border: 3px solid #6a0dad;
     object-fit: cover;
@@ -29,9 +35,9 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    padding: 40px;
+    padding: 40px 20px; /* fixed horizontal overflow */
     max-width: 900px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 /* CARDS */
