@@ -3,229 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <title>Research | Sachal Abdullah</title>
-    <link rel="stylesheet" href="assets/main.css">
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; }
+        .hero, .content { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        .graph-container {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+        }
 
-<style>
-.graph-container {
-    display: flex;
-    justify-content: center;
-    margin: 60px 0;
-}
+        .graph-container svg {
+            width: 500px;
+            height: 500px;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+            overflow: visible;
+        }
 
-.graph-container svg {
-    width: 500px;
-    height: 500px;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
-}
+        /* Base Edge styling */
+        .base-edge { 
+            fill: none; 
+            stroke: #bbbbbb; 
+            stroke-width: 2.5; 
+            stroke-linejoin: round; 
+            stroke-linecap: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            animation: drawEdges 3s ease-out forwards;
+        }
 
-/* Edge styling */
-polygon, line { 
-    fill: none; 
-    stroke: #bbbbbb; 
-    stroke-width: 2.5; 
-    stroke-linejoin: round; 
-    stroke-linecap: round;
-}
+        /* Vertex styling */
+        circle { 
+            fill: #ff6b6b; 
+            stroke: #121212; 
+            stroke-width: 2; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+            opacity: 0;
+            transform: scale(0.5);
+            transform-origin: center;
+            /* Vertices pop in after edges start drawing */
+            animation: popIn 0.5s ease forwards;
+            animation-delay: 2.5s;
+        }
 
-/* Vertex styling */
-circle { 
-    fill: #ff6b6b; 
-    stroke: #121212; 
-    stroke-width: 2; 
-    cursor: pointer; 
-    transition: all 0.2s ease; 
-}
+        circle:hover { 
+            fill: #3498db; 
+            r: 8; 
+        }
 
-circle:hover { 
-    fill: #3498db; 
-    r: 8; 
-}
+        /* ===== HAMILTONIAN CYCLE ===== */
+        .cycle {
+            stroke: #ff3b3b;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            /* Starts after the graph is built */
+            animation: drawCycle 6s linear forwards;
+            animation-delay: 4s;
+        }
 
-/* ===== EDGE ANIMATION ===== */
-.graph line,
-.graph polygon {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: drawEdges 2s ease forwards;
-    pathLength: 1;
-}
+        /* ===== KEYFRAMES ===== */
+        @keyframes drawEdges {
+            to { stroke-dashoffset: 0; }
+        }
 
-/* ===== VERTEX ANIMATION ===== */
-.graph circle {
-    opacity: 0;
-    transform: scale(0.5);
-    animation: popIn 0.4s ease forwards;
-}
+        @keyframes drawCycle {
+            to { stroke-dashoffset: 0; }
+        }
 
-.graph circle:nth-of-type(1) { animation-delay: 1.2s; }
-.graph circle:nth-of-type(2) { animation-delay: 1.25s; }
-.graph circle:nth-of-type(3) { animation-delay: 1.3s; }
-.graph circle:nth-of-type(4) { animation-delay: 1.35s; }
-.graph circle:nth-of-type(5) { animation-delay: 1.4s; }
-
-/* ===== KEYFRAMES ===== */
-@keyframes drawEdges {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes popIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* ===== HAMILTONIAN CYCLE ===== */
-.cycle {
-    stroke: #ff3b3b;
-    stroke-width: 4;
-    stroke-linecap: round;
-
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    pathLength: 1;
-
-    animation: drawCycle 2s ease forwards;
-    animation-delay: 2.2s;
-}
-
-@keyframes drawCycle {
-    to { stroke-dashoffset: 0; }
-}
-</style>
-
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
-
 <body>
 
 <div class="hero">
     <h1>Research</h1>
-    <p class="tagline">
-        Graph Theory · Combinatorics · Discrete Mathematics
-    </p>
+    <p class="tagline">Graph Theory · Combinatorics · Discrete Mathematics</p>
 </div>
 
 <div class="content">
-    <p>
-        My research interests lie in graph theory and discrete mathematics.
-    </p>
-
-    <p>
-        I am especially interested in problems related to the existence and characterization of
-        unique Hamiltonian cycles. In general, I am interested in construction of uniquely Hamiltonian graphs and 
-        exploring which classes of graphs cannot be uniquely Hamiltonian. 
-    </p>
+    <p>My research interests lie in graph theory and discrete mathematics.</p>
+    <p>I am especially interested in problems related to the existence and characterization of unique Hamiltonian cycles.</p>
 </div>
 
 <div class="graph-container">
-<svg viewBox="0 0 400 400" class="graph">
+    <svg viewBox="0 0 400 400" class="graph">
+        <polygon class="base-edge" pathLength="1" points="200,20 371,144 306,346 94,346 29,144" />
 
-    <!-- OUTER -->
-    <polygon points="200,20 371,144 306,346 94,346 29,144" />
+        <polygon class="base-edge" pathLength="1" points="200,80 241,143 314,163 267,222 271,297 200,270 129,297 133,222 86,163 159,143" />
 
-    <!-- MIDDLE -->
-    <polygon points="
-        200,80 
-        241,143 
-        314,163 
-        267,222 
-        271,297 
-        200,270 
-        129,297 
-        133,222 
-        86,163 
-        159,143" />
+        <polygon class="base-edge" pathLength="1" points="218,176 229,209 200,230 171,209 182,176" />
 
-    <!-- INNER -->
-    <polygon points="218,176 229,209 200,230 171,209 182,176" />
+        <line class="base-edge" pathLength="1" x1="200" y1="20"  x2="200" y2="80" />
+        <line class="base-edge" pathLength="1" x1="371" y1="144" x2="314" y2="163" />
+        <line class="base-edge" pathLength="1" x1="306" y1="346" x2="271" y2="297" />
+        <line class="base-edge" pathLength="1" x1="94"  y1="346" x2="129" y2="297" />
+        <line class="base-edge" pathLength="1" x1="29"  y1="144" x2="86"  y2="163" />
+        <line class="base-edge" pathLength="1" x1="241" y1="143" x2="218" y2="176" />
+        <line class="base-edge" pathLength="1" x1="267" y1="222" x2="229" y2="209" />
+        <line class="base-edge" pathLength="1" x1="200" y1="270" x2="200" y2="230" />
+        <line class="base-edge" pathLength="1" x1="133" y1="222" x2="171" y2="209" />
+        <line class="base-edge" pathLength="1" x1="159" y1="143" x2="182" y2="176" />
 
-    <!-- BRIDGES -->
-    <line x1="200" y1="20"  x2="200" y2="80" />
-    <line x1="371" y1="144" x2="314" y2="163" />
-    <line x1="306" y1="346" x2="271" y2="297" />
-    <line x1="94"  y1="346" x2="129" y2="297" />
-    <line x1="29"  y1="144" x2="86"  y2="163" />
+        <circle cx="200" cy="20" r="5"/><circle cx="371" cy="144" r="5"/><circle cx="306" cy="346" r="5"/><circle cx="94"  cy="346" r="5"/><circle cx="29"  cy="144" r="5"/>
+        <circle cx="200" cy="80" r="5"/><circle cx="314" cy="163" r="5"/><circle cx="271" cy="297" r="5"/><circle cx="129" cy="297" r="5"/><circle cx="86"  cy="163" r="5"/>
+        <circle cx="241" cy="143" r="5"/><circle cx="267" cy="222" r="5"/><circle cx="200" cy="270" r="5"/><circle cx="133" cy="222" r="5"/><circle cx="159" cy="143" r="5"/>
+        <circle cx="218" cy="176" r="5"/><circle cx="229" cy="209" r="5"/><circle cx="200" cy="230" r="5"/><circle cx="171" cy="209" r="5"/><circle cx="182" cy="176" r="5"/>
 
-    <line x1="241" y1="143" x2="218" y2="176" />
-    <line x1="267" y1="222" x2="229" y2="209" />
-    <line x1="200" y1="270" x2="200" y2="230" />
-    <line x1="133" y1="222" x2="171" y2="209" />
-    <line x1="159" y1="143" x2="182" y2="176" />
-
-    <!-- VERTICES -->
-    <circle cx="200" cy="20" r="5"/>
-    <circle cx="371" cy="144" r="5"/>
-    <circle cx="306" cy="346" r="5"/>
-    <circle cx="94"  cy="346" r="5"/>
-    <circle cx="29"  cy="144" r="5"/>
-
-    <circle cx="200" cy="80" r="5"/>
-    <circle cx="314" cy="163" r="5"/>
-    <circle cx="271" cy="297" r="5"/>
-    <circle cx="129" cy="297" r="5"/>
-    <circle cx="86"  cy="163" r="5"/>
-
-    <circle cx="241" cy="143" r="5"/>
-    <circle cx="267" cy="222" r="5"/>
-    <circle cx="200" cy="270" r="5"/>
-    <circle cx="133" cy="222" r="5"/>
-    <circle cx="159" cy="143" r="5"/>
-
-    <circle cx="218" cy="176" r="5"/>
-    <circle cx="229" cy="209" r="5"/>
-    <circle cx="200" cy="230" r="5"/>
-    <circle cx="171" cy="209" r="5"/>
-    <circle cx="182" cy="176" r="5"/>
-
-   <polyline class="cycle" points="
-    200,20 
-    29,144 
-    86,163 
-    159,143 
-    182,176 
-    218,176 
-    241,143 
-    200,80 
-    200,20 
-    371,144 
-    314,163 
-    267,222 
-    229,209 
-    200,230 
-    171,209 
-    133,222 
-    129,297 
-    94,346 
-    306,346 
-    271,297 
-    200,270 
-    200,230" 
-    style="display:none;" /> <polyline class="cycle" points="
-    200,20 
-    29,144 
-    94,346 
-    129,297 
-    200,270 
-    271,297 
-    306,346 
-    371,144 
-    314,163 
-    267,222 
-    229,209 
-    200,230 
-    171,209 
-    133,222 
-    86,163 
-    159,143 
-    182,176 
-    218,176 
-    241,143 
-    200,80 
-    200,20" 
-    fill="none" />
-
-</svg>
-    
+        <polyline class="cycle" pathLength="1" points="
+            200,20 
+            29,144 
+            94,346 
+            129,297 
+            200,270 
+            271,297 
+            306,346 
+            371,144 
+            314,163 
+            267,222 
+            229,209 
+            200,230 
+            171,209 
+            133,222 
+            86,163 
+            159,143 
+            182,176 
+            218,176 
+            241,143 
+            200,80 
+            200,20" />
+    </svg>
 </div>
 
 </body>
