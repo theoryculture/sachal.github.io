@@ -2,191 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Research | Sachal Abdullah</title>
+    <title>Sachal Abdullah | Mathematics</title>
+
     <link rel="stylesheet" href="/sachal.github.io/assets/main.css">
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Top-left Return Button */
-        .nav-header {
-            padding: 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .back-link {
-            color: #888;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: #ff6b6b;
-        }
-
-        .hero {
-            padding: 40px 20px 0px; /* Reduced bottom padding */
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            color: #ffffff;
-        }
-
-        .tagline {
-            color: #888;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 10px 20px; /* Minimal padding to remove spacing */
-            line-height: 1.8;
-            color: #bbbbbb;
-            text-align: center;
-        }
-
-        .graph-container {
-            display: flex;
-            flex-direction: column; /* Stack SVG and Caption */
-            align-items: center;
-            margin: 20px 0 60px;
-        }
-
-        .graph-container svg {
-            width: 500px;
-            height: 500px;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
-            overflow: visible;
-        }
-
-        .graph-caption {
-            margin-top: 20px;
-            color: #888;
-            font-size: 0.95rem;
-            font-style: italic;
-            letter-spacing: 0.5px;
-        }
-
-        /* GRAPH STYLING - UNCHANGED */
-        .base-edge { 
-            fill: none; 
-            stroke: #444; 
-            stroke-width: 2.5; 
-            stroke-linejoin: round; 
-            stroke-linecap: round;
-            stroke-dasharray: 1;
-            stroke-dashoffset: 1;
-            animation: drawEdges 3s ease-out forwards;
-        }
-
-        circle { 
-            fill: #ff6b6b; 
-            stroke: #121212; 
-            stroke-width: 2; 
-            opacity: 0;
-            transform: scale(0.5);
-            transform-origin: center;
-            animation: popIn 0.5s ease forwards;
-            animation-delay: 2.5s;
-        }
-
-        .cycle {
-            stroke: #ff3b3b;
-            stroke-width: 4;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
-            stroke-dasharray: 1;
-            stroke-dashoffset: 1;
-            animation: drawCycle 6s linear forwards;
-            animation-delay: 4s;
-        }
-
-        @keyframes drawEdges { to { stroke-dashoffset: 0; } }
-        @keyframes drawCycle { to { stroke-dashoffset: 0; } }
-        @keyframes popIn { to { opacity: 1; transform: scale(1); } }
-    </style>
 </head>
+
 <body>
 
-<header class="nav-header">
-    <a href="/sachal.github.io/" class="back-link">← Return Home</a>
-</header>
-
 <div class="hero">
-    <h1>Research</h1>
-    <p class="tagline">Graph Theory · Combinatorics · Discrete Mathematics</p>
-</div>
+    <img src="/sachal.github.io/assets/images/profile.jpg" alt="Sachal Abdullah" class="profile-img">
 
-<div class="content">
-    <p>
-        My research interests lie in graph theory and discrete mathematics. I am especially interested in problems related to the existence and characterization of unique Hamiltonian cycles.
-    </p>
-    <p>
-        In general, I am interested in construction of uniquely Hamiltonian graphs and exploring which classes of graphs cannot be uniquely Hamiltonian.
+    <h1>Sachal Abdullah</h1>
+    <p class="tagline">
+        Graph Theory · Recreational Mathematics
     </p>
 </div>
 
-<div class="graph-container">
-    <svg viewBox="0 0 400 400" class="graph">
-        <polygon class="base-edge" pathLength="1" points="200,20 371,144 306,346 94,346 29,144" />
-        <polygon class="base-edge" pathLength="1" points="200,80 241,143 314,163 267,222 271,297 200,270 129,297 133,222 86,163 159,143" />
-        <polygon class="base-edge" pathLength="1" points="218,176 229,209 200,230 171,209 182,176" />
+<div class="grid">
 
-        <line class="base-edge" pathLength="1" x1="200" y1="20"  x2="200" y2="80" />
-        <line class="base-edge" pathLength="1" x1="371" y1="144" x2="314" y2="163" />
-        <line class="base-edge" pathLength="1" x1="306" y1="346" x2="271" y2="297" />
-        <line class="base-edge" pathLength="1" x1="94"  y1="346" x2="129" y2="297" />
-        <line class="base-edge" pathLength="1" x1="29"  y1="144" x2="86"  y2="163" />
-        <line class="base-edge" pathLength="1" x1="241" y1="143" x2="218" y2="176" />
-        <line class="base-edge" pathLength="1" x1="267" y1="222" x2="229" y2="209" />
-        <line class="base-edge" pathLength="1" x1="200" y1="270" x2="200" y2="230" />
-        <line class="base-edge" pathLength="1" x1="133" y1="222" x2="171" y2="209" />
-        <line class="base-edge" pathLength="1" x1="159" y1="143" x2="182" y2="176" />
+    <a href="/sachal.github.io/mathematics" class="card">
+        <h2>Mathematics</h2>
+        <p>Writings, Notes, and Lectures</p>
+    </a>
 
-        <circle cx="200" cy="20" r="5"/><circle cx="371" cy="144" r="5"/><circle cx="306" cy="346" r="5"/><circle cx="94"  cy="346" r="5"/><circle cx="29"  cy="144" r="5"/>
-        <circle cx="200" cy="80" r="5"/><circle cx="314" cy="163" r="5"/><circle cx="271" cy="297" r="5"/><circle cx="129" cy="297" r="5"/><circle cx="86"  cy="163" r="5"/>
-        <circle cx="241" cy="143" r="5"/><circle cx="267" cy="222" r="5"/><circle cx="200" cy="270" r="5"/><circle cx="133" cy="222" r="5"/><circle cx="159" cy="143" r="5"/>
-        <circle cx="218" cy="176" r="5"/><circle cx="229" cy="209" r="5"/><circle cx="200" cy="230" r="5"/><circle cx="171" cy="209" r="5"/><circle cx="182" cy="176" r="5"/>
+    <a href="/sachal.github.io/tutorings" class="card">
+        <h2>Tutorings</h2>
+        <p>Lessons, guidance, and problem solving</p>
+    </a>
 
-        <polyline class="cycle" pathLength="1" points="
-            200,20 
-            29,144 
-            94,346 
-            129,297 
-            200,270 
-            271,297 
-            306,346 
-            371,144 
-            314,163 
-            267,222 
-            229,209 
-            200,230 
-            171,209 
-            133,222 
-            86,163 
-            159,143 
-            182,176 
-            218,176 
-            241,143 
-            200,80 
-            200,20" />
-    </svg>
-    <div class="graph-caption">Dodecahedral graph with a Hamiltonian cycle</div>
+    <a href="/sachal.github.io/research" class="card">
+        <h2>Research</h2>
+        <p>My research interests</p>
+    </a>
+
+   <a href="mailto:sachalabdullah10@gmail.com" class="card">
+        <h2>Contact</h2>
+        <p>Click here to send me an email</p>
+    </a>
+  
+   <a href="assets/cv.pdf" class="card" target="_blank">
+        <h2>CV</h2>
+        <p>Academic background, teaching, and experience</p>
+    </a>
+
 </div>
 
 </body>
