@@ -42,6 +42,58 @@
             fill: #3498db; 
             r: 8; 
         }
+
+
+            /* ===== EDGE ANIMATION ===== */
+.graph line,
+.graph polygon {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawEdges 2s ease forwards;
+}
+
+/* Stagger effect */
+.graph line:nth-of-type(1) { animation-delay: 0.1s; }
+.graph line:nth-of-type(2) { animation-delay: 0.2s; }
+.graph line:nth-of-type(3) { animation-delay: 0.3s; }
+.graph line:nth-of-type(4) { animation-delay: 0.4s; }
+.graph line:nth-of-type(5) { animation-delay: 0.5s; }
+.graph line:nth-of-type(6) { animation-delay: 0.6s; }
+.graph line:nth-of-type(7) { animation-delay: 0.7s; }
+.graph line:nth-of-type(8) { animation-delay: 0.8s; }
+.graph line:nth-of-type(9) { animation-delay: 0.9s; }
+.graph line:nth-of-type(10){ animation-delay: 1.0s; }
+
+/* ===== VERTEX ANIMATION ===== */
+.graph circle {
+    opacity: 0;
+    transform: scale(0.5);
+    animation: popIn 0.4s ease forwards;
+}
+
+/* slight delay after edges */
+.graph circle:nth-of-type(1) { animation-delay: 1.2s; }
+.graph circle:nth-of-type(2) { animation-delay: 1.25s; }
+.graph circle:nth-of-type(3) { animation-delay: 1.3s; }
+.graph circle:nth-of-type(4) { animation-delay: 1.35s; }
+.graph circle:nth-of-type(5) { animation-delay: 1.4s; }
+/* you can continue or leave—browser repeats pattern fine */
+
+/* ===== KEYFRAMES ===== */
+@keyframes drawEdges {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes popIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+    
     </style>
 
 </head>
@@ -70,7 +122,8 @@
 </div>
 
  <div class="graph-container">
-<svg viewBox="0 0 400 400">
+     
+<svg viewBox="0 0 400 400" class="graph">
     
     <polygon points="200,20 371,144 306,346 94,346 29,144" />
 
