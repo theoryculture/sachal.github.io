@@ -5,7 +5,6 @@
     <title>Research | Sachal Abdullah</title>
     <link rel="stylesheet" href="/sachal.github.io/assets/main.css">
     <style>
-        /* Ensuring the background and text match your homepage look */
         body {
             background-color: #121212;
             color: #e0e0e0;
@@ -14,8 +13,27 @@
             padding: 0;
         }
 
+        /* Top-left Return Button */
+        .nav-header {
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .back-link {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #ff6b6b;
+        }
+
         .hero {
-            padding: 60px 20px 20px;
+            padding: 40px 20px 0px; /* Reduced bottom padding */
             text-align: center;
         }
 
@@ -29,23 +47,23 @@
             color: #888;
             font-size: 1.1rem;
             letter-spacing: 1px;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 10px 20px; /* Minimal padding to remove spacing */
             line-height: 1.8;
             color: #bbbbbb;
             text-align: center;
         }
 
-        /* GRAPH STYLING - UNCHANGED */
         .graph-container {
             display: flex;
-            justify-content: center;
-            margin: 20px 0 80px;
+            flex-direction: column; /* Stack SVG and Caption */
+            align-items: center;
+            margin: 20px 0 60px;
         }
 
         .graph-container svg {
@@ -55,6 +73,15 @@
             overflow: visible;
         }
 
+        .graph-caption {
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.95rem;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        /* GRAPH STYLING - UNCHANGED */
         .base-edge { 
             fill: none; 
             stroke: #444; 
@@ -70,18 +97,11 @@
             fill: #ff6b6b; 
             stroke: #121212; 
             stroke-width: 2; 
-            cursor: pointer; 
-            transition: all 0.2s ease; 
             opacity: 0;
             transform: scale(0.5);
             transform-origin: center;
             animation: popIn 0.5s ease forwards;
             animation-delay: 2.5s;
-        }
-
-        circle:hover { 
-            fill: #3498db; 
-            r: 8; 
         }
 
         .cycle {
@@ -99,26 +119,13 @@
         @keyframes drawEdges { to { stroke-dashoffset: 0; } }
         @keyframes drawCycle { to { stroke-dashoffset: 0; } }
         @keyframes popIn { to { opacity: 1; transform: scale(1); } }
-
-        /* Navigation link back to home */
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            color: #ff6b6b;
-            text-decoration: none;
-            border: 1px solid #ff6b6b;
-            padding: 10px 20px;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-
-        .back-link:hover {
-            background: #ff6b6b;
-            color: #121212;
-        }
     </style>
 </head>
 <body>
+
+<header class="nav-header">
+    <a href="/sachal.github.io/" class="back-link">← Return Home</a>
+</header>
 
 <div class="hero">
     <h1>Research</h1>
@@ -179,10 +186,7 @@
             200,80 
             200,20" />
     </svg>
-</div>
-
-<div style="text-align: center;">
-    <a href="/sachal.github.io/" class="back-link">← Return Home</a>
+    <div class="graph-caption">Dodecahedral graph with a Hamiltonian cycle</div>
 </div>
 
 </body>
