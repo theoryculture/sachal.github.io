@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/main.css">
 
 <style>
-    .graph-container {
+.graph-container {
     display: flex;
     justify-content: center;
     margin: 60px 0;
@@ -17,34 +17,31 @@
     height: 500px;
     filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
 }
-        svg { 
-            width: 500px; 
-            height: 500px; 
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
-        }
-        /* Edge styling */
-        polygon, line { 
-            fill: none; 
-            stroke: #2c3e50; 
-            stroke-width: 2.5; 
-            stroke-linejoin: round; 
-            stroke-linecap: round;
-        }
-        /* Vertex styling */
-        circle { 
-            fill: #e74c3c; 
-            stroke: #fff; 
-            stroke-width: 2; 
-            cursor: pointer; 
-            transition: all 0.2s ease; 
-        }
-        circle:hover { 
-            fill: #3498db; 
-            r: 8; 
-        }
 
+/* Edge styling */
+polygon, line { 
+    fill: none; 
+    stroke: #bbbbbb; 
+    stroke-width: 2.5; 
+    stroke-linejoin: round; 
+    stroke-linecap: round;
+}
 
-            /* ===== EDGE ANIMATION ===== */
+/* Vertex styling */
+circle { 
+    fill: #ff6b6b; 
+    stroke: #121212; 
+    stroke-width: 2; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+}
+
+circle:hover { 
+    fill: #3498db; 
+    r: 8; 
+}
+
+/* ===== EDGE ANIMATION ===== */
 .graph line,
 .graph polygon {
     stroke-dasharray: 1;
@@ -53,18 +50,6 @@
     pathLength: 1;
 }
 
-/* Stagger effect */
-.graph line:nth-of-type(1) { animation-delay: 0.1s; }
-.graph line:nth-of-type(2) { animation-delay: 0.2s; }
-.graph line:nth-of-type(3) { animation-delay: 0.3s; }
-.graph line:nth-of-type(4) { animation-delay: 0.4s; }
-.graph line:nth-of-type(5) { animation-delay: 0.5s; }
-.graph line:nth-of-type(6) { animation-delay: 0.6s; }
-.graph line:nth-of-type(7) { animation-delay: 0.7s; }
-.graph line:nth-of-type(8) { animation-delay: 0.8s; }
-.graph line:nth-of-type(9) { animation-delay: 0.9s; }
-.graph line:nth-of-type(10){ animation-delay: 1.0s; }
-
 /* ===== VERTEX ANIMATION ===== */
 .graph circle {
     opacity: 0;
@@ -72,19 +57,15 @@
     animation: popIn 0.4s ease forwards;
 }
 
-/* slight delay after edges */
 .graph circle:nth-of-type(1) { animation-delay: 1.2s; }
 .graph circle:nth-of-type(2) { animation-delay: 1.25s; }
 .graph circle:nth-of-type(3) { animation-delay: 1.3s; }
 .graph circle:nth-of-type(4) { animation-delay: 1.35s; }
 .graph circle:nth-of-type(5) { animation-delay: 1.4s; }
-/* you can continue or leave—browser repeats pattern fine */
 
 /* ===== KEYFRAMES ===== */
 @keyframes drawEdges {
-    to {
-        stroke-dashoffset: 0;
-    }
+    to { stroke-dashoffset: 0; }
 }
 
 @keyframes popIn {
@@ -94,34 +75,7 @@
     }
 }
 
-    /* ===== HAMILTONIAN CYCLE ===== */
-.hamiltonian {
-    fill: none;
-    stroke: #ff3b3b;
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    pathLength: 1;
-
-    animation: drawCycle 2.5s ease forwards;
-    animation-delay: 2.2s; /* starts AFTER graph builds */
-}
-
-/* optional glow effect */
-.hamiltonian {
-    filter: drop-shadow(0 0 6px rgba(255, 59, 59, 0.6));
-}
-
-@keyframes drawCycle {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-    /* HAMILTONIAN CYCLE */
+/* ===== HAMILTONIAN CYCLE ===== */
 .cycle {
     stroke: #ff3b3b;
     stroke-width: 4;
@@ -134,8 +88,11 @@
     animation: drawCycle 2s ease forwards;
     animation-delay: 2.2s;
 }
-    
-    </style>
+
+@keyframes drawCycle {
+    to { stroke-dashoffset: 0; }
+}
+</style>
 
 </head>
 
@@ -149,7 +106,6 @@
 </div>
 
 <div class="content">
-
     <p>
         My research interests lie in graph theory and discrete mathematics.
     </p>
@@ -157,17 +113,17 @@
     <p>
         I am especially interested in problems related to the existence and characterization of
         unique Hamiltonian cycles. In general, I am interested in construction of uniquely Hamiltonian graphs and 
-        exploring which classes of graphs cannot be uniquely Hamiltomnian. 
+        exploring which classes of graphs cannot be uniquely Hamiltonian. 
     </p>
-    
 </div>
 
- <div class="graph-container">
-     
+<div class="graph-container">
 <svg viewBox="0 0 400 400" class="graph">
-    
+
+    <!-- OUTER -->
     <polygon points="200,20 371,144 306,346 94,346 29,144" />
 
+    <!-- MIDDLE -->
     <polygon points="
         200,80 
         241,143 
@@ -180,8 +136,10 @@
         86,163 
         159,143" />
 
+    <!-- INNER -->
     <polygon points="218,176 229,209 200,230 171,209 182,176" />
 
+    <!-- BRIDGES -->
     <line x1="200" y1="20"  x2="200" y2="80" />
     <line x1="371" y1="144" x2="314" y2="163" />
     <line x1="306" y1="346" x2="271" y2="297" />
@@ -194,54 +152,52 @@
     <line x1="133" y1="222" x2="171" y2="209" />
     <line x1="159" y1="143" x2="182" y2="176" />
 
-    <circle cx="200" cy="20"  r="5" />
-    <circle cx="371" cy="144" r="5" />
-    <circle cx="306" cy="346" r="5" />
-    <circle cx="94"  cy="346" r="5" />
-    <circle cx="29"  cy="144" r="5" />
+    <!-- VERTICES -->
+    <circle cx="200" cy="20" r="5"/>
+    <circle cx="371" cy="144" r="5"/>
+    <circle cx="306" cy="346" r="5"/>
+    <circle cx="94"  cy="346" r="5"/>
+    <circle cx="29"  cy="144" r="5"/>
 
-    <circle cx="200" cy="80"  r="5" />
-    <circle cx="314" cy="163" r="5" />
-    <circle cx="271" cy="297" r="5" />
-    <circle cx="129" cy="297" r="5" />
-    <circle cx="86"  cy="163" r="5" />
+    <circle cx="200" cy="80" r="5"/>
+    <circle cx="314" cy="163" r="5"/>
+    <circle cx="271" cy="297" r="5"/>
+    <circle cx="129" cy="297" r="5"/>
+    <circle cx="86"  cy="163" r="5"/>
 
-    <circle cx="241" cy="143" r="5" />
-    <circle cx="267" cy="222" r="5" />
-    <circle cx="200" cy="270" r="5" />
-    <circle cx="133" cy="222" r="5" />
-    <circle cx="159" cy="143" r="5" />
+    <circle cx="241" cy="143" r="5"/>
+    <circle cx="267" cy="222" r="5"/>
+    <circle cx="200" cy="270" r="5"/>
+    <circle cx="133" cy="222" r="5"/>
+    <circle cx="159" cy="143" r="5"/>
 
-    <circle cx="218" cy="176" r="5" />
-    <circle cx="229" cy="209" r="5" />
-    <circle cx="200" cy="230" r="5" />
-    <circle cx="171" cy="209" r="5" />
-    <circle cx="182" cy="176" r="5" />
+    <circle cx="218" cy="176" r="5"/>
+    <circle cx="229" cy="209" r="5"/>
+    <circle cx="200" cy="230" r="5"/>
+    <circle cx="171" cy="209" r="5"/>
+    <circle cx="182" cy="176" r="5"/>
 
-
-<!-- HAMILTONIAN CYCLE -->
-<line class="cycle" x1="200" y1="20"  x2="371" y2="144" />
-<line class="cycle" x1="371" y1="144" x2="314" y2="163" />
-<line class="cycle" x1="314" y1="163" x2="241" y2="143" />
-<line class="cycle" x1="241" y1="143" x2="218" y2="176" />
-<line class="cycle" x1="218" y1="176" x2="182" y2="176" />
-<line class="cycle" x1="182" y1="176" x2="159" y2="143" />
-<line class="cycle" x1="159" y1="143" x2="86"  y2="163" />
-<line class="cycle" x1="86"  y1="163" x2="29"  y2="144" />
-<line class="cycle" x1="29"  y1="144" x2="94"  y2="346" />
-<line class="cycle" x1="94"  y1="346" x2="129" y2="297" />
-<line class="cycle" x1="129" y1="297" x2="133" y2="222" />
-<line class="cycle" x1="133" y1="222" x2="171" y2="209" />
-<line class="cycle" x1="171" y1="209" x2="200" y2="230" />
-<line class="cycle" x1="200" y1="230" x2="229" y2="209" />
-<line class="cycle" x1="229" y1="209" x2="267" y2="222" />
-<line class="cycle" x1="267" y1="222" x2="271" y2="297" />
-<line class="cycle" x1="271" y1="297" x2="306" y2="346" />
-<line class="cycle" x1="306" y1="346" x2="200" y2="270" />
-<line class="cycle" x1="200" y1="270" x2="200" y2="20" />
-
+    <!-- HAMILTONIAN CYCLE (FIXED) -->
+    <line class="cycle" x1="200" y1="20"  x2="200" y2="80" />
+    <line class="cycle" x1="200" y1="80"  x2="241" y2="143" />
+    <line class="cycle" x1="241" y1="143" x2="314" y2="163" />
+    <line class="cycle" x1="314" y1="163" x2="371" y2="144" />
+    <line class="cycle" x1="371" y1="144" x2="306" y2="346" />
+    <line class="cycle" x1="306" y1="346" x2="271" y2="297" />
+    <line class="cycle" x1="271" y1="297" x2="200" y2="270" />
+    <line class="cycle" x1="200" y1="270" x2="129" y2="297" />
+    <line class="cycle" x1="129" y1="297" x2="94"  y2="346" />
+    <line class="cycle" x1="94"  y1="346" x2="29"  y2="144" />
+    <line class="cycle" x1="29"  y1="144" x2="86"  y2="163" />
+    <line class="cycle" x1="86"  y1="163" x2="133" y2="222" />
+    <line class="cycle" x1="133" y1="222" x2="171" y2="209" />
+    <line class="cycle" x1="171" y1="209" x2="200" y2="230" />
+    <line class="cycle" x1="200" y1="230" x2="229" y2="209" />
+    <line class="cycle" x1="229" y1="209" x2="267" y2="222" />
+    <line class="cycle" x1="267" y1="222" x2="241" y2="143" />
 
 </svg>
+</div>
 
 </body>
 </html>
