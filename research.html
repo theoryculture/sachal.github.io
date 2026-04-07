@@ -5,8 +5,42 @@
     <title>Research | Sachal Abdullah</title>
     <link rel="stylesheet" href="assets/main.css">
 
-
-    
+<style>
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #f8f9fa; 
+            margin: 0; 
+            font-family: sans-serif;
+        }
+        svg { 
+            width: 500px; 
+            height: 500px; 
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
+        }
+        /* Edge styling */
+        polygon, line { 
+            fill: none; 
+            stroke: #2c3e50; 
+            stroke-width: 2.5; 
+            stroke-linejoin: round; 
+            stroke-linecap: round;
+        }
+        /* Vertex styling */
+        circle { 
+            fill: #e74c3c; 
+            stroke: #fff; 
+            stroke-width: 2; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+        }
+        circle:hover { 
+            fill: #3498db; 
+            r: 8; 
+        }
+    </style>
 
 </head>
 
