@@ -6,15 +6,17 @@
     <link rel="stylesheet" href="assets/main.css">
 
 <style>
-        body { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            background-color: #f8f9fa; 
-            margin: 0; 
-            font-family: sans-serif;
-        }
+    .graph-container {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+.graph-container svg {
+    width: 500px;
+    height: 500px;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+}
         svg { 
             width: 500px; 
             height: 500px; 
@@ -67,7 +69,8 @@
     
 </div>
 
-    <svg viewBox="0 0 400 400">
+ <div class="graph-container">
+<svg viewBox="0 0 400 400">
     
     <polygon points="200,20 371,144 306,346 94,346 29,144" />
 
