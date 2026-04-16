@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <title>Graph Theory | Sachal Abdullah</title>
     <link rel="stylesheet" href="/sachal.github.io/assets/main.css">
+
+    <!-- ✅ MathJax CONFIG (must come first) -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+
+    <!-- ✅ MathJax SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
+
 <style>
 body {
     background-color: #121212;
@@ -14,7 +26,7 @@ body {
     margin: 0;
 }
 
-  .nav-header {
+.nav-header {
     padding: 20px;
 }
 
@@ -27,7 +39,7 @@ body {
     color: #ff6b6b;
 }
 
-/ HERO /
+/* HERO */
 .hero {
     text-align: center;
     padding: 40px 20px;
@@ -38,14 +50,14 @@ h1 {
     margin: 0;
 }
 
-/ CONTENT /
+/* CONTENT */
 .content {
     max-width: 800px;
     margin: auto;
     padding: 20px;
 }
 
-/ TOPIC LIST */
+/* TOPIC LIST */
 details {
     background: #1e1e1e;
     border: 1px solid #333;
@@ -70,7 +82,6 @@ details p {
     line-height: 1.6;
     color: #ccc;
 }
-
 </style>
 
 </head>
@@ -88,42 +99,42 @@ details p {
 <div class="content">
 
     <!-- TOPIC 1 -->
-   <details>
-    <summary>1. What is a Graph?</summary>
+    <details>
+        <summary>1. What is a Graph?</summary>
 
-    <p>
-        A graph is a mathematical structure consisting of vertices and edges.
-    </p>
+        <p>
+            A graph is a mathematical structure consisting of vertices and edges.
+        </p>
 
-    <p>
-        Formally, a graph is written as:
-    </p>
+        <p>
+            Formally, a graph is written as:
+        </p>
 
-    <p>
-        \[
-        G = (V, E)
-        \]
-    </p>
+        <p>
+            \[
+            G = (V, E)
+            \]
+        </p>
 
-    <p>
-        where \( V \) is the set of vertices and \( E \) is the set of edges.
-    </p>
-</details>
+        <p>
+            where \( V \) is the set of vertices and \( E \) is the set of edges.
+        </p>
+    </details>
+
     <!-- TOPIC 2 -->
     <details>
         <summary>2. Hamiltonian and Eulerian Graphs</summary>
+
         <p>
-            A graph is called Hamiltonian if it contains a cycle that visits every vertex exactly once.
+            A graph is Hamiltonian if it contains a cycle 
+            \( v_1 \to v_2 \to \cdots \to v_n \to v_1 \) 
+            that visits every vertex exactly once.
         </p>
 
         <p>
             A graph is Eulerian if it contains a cycle that uses every edge exactly once.
         </p>
 
-        <p>
-            These concepts are fundamental in graph theory and arise in many problems
-            involving traversal and optimization.
-        </p>
     </details>
 
 </div>
