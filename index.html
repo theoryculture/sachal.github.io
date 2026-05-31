@@ -2,103 +2,184 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>File Viewer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sachal Abdullah | Mathematics</title>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Sachal Abdullah | Mathematics"/>
+<meta property="og:description" content="Research in Graph Theory and Combinatorics. Explore Hamiltonian cycles and mathematical notes."/>
+<meta property="og:image" content="https://theoryculture.github.io/sachal.github.io/assets/images/thumbnail.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0d0d0d;color:#ccc;font-family:'JetBrains Mono',monospace;font-size:13px}
-.tabs{display:flex;gap:2px;padding:12px 12px 0;overflow-x:auto;flex-wrap:wrap;background:#111}
-.tab{padding:8px 16px;background:#1a1a1a;border:1px solid #2a2a2a;cursor:pointer;color:#666;font-size:11px;letter-spacing:.05em;white-space:nowrap;transition:all .15s}
-.tab:hover{color:#ccc}
-.tab.on{background:#1e1e1e;border-bottom-color:#1e1e1e;color:#9b59ff}
-.toolbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:#1e1e1e;border-bottom:1px solid #2a2a2a}
-.filename{color:#9b59ff;font-size:11px}
-.copy-btn{padding:5px 14px;background:none;border:1px solid #333;color:#666;font-family:inherit;font-size:11px;cursor:pointer;transition:all .15s}
-.copy-btn:hover{border-color:#9b59ff;color:#9b59ff}
-.copy-btn.ok{border-color:#4caf50;color:#4caf50}
-.pane{display:none;padding:20px;overflow:auto;height:calc(100vh - 90px)}
-.pane.on{display:block}
-pre{white-space:pre;line-height:1.6;color:#abb2bf;font-size:12px}
-/* syntax tint */
-.t-tag{color:#e06c75}
-.t-attr{color:#d19a66}
-.t-str{color:#98c379}
-.t-com{color:#5c6370;font-style:italic}
+:root{
+  --bg:#111111;
+  --bg2:#181818;
+  --bg3:#1e1e1e;
+  --border:#2a2a2a;
+  --text:#e8e6e0;
+  --muted:#666;
+  --accent:#9b59ff;   /* purple — matches your existing #6a0dad spirit */
+  --red:#ff6b6b;      /* red — your subpage accent */
+  --serif:'EB Garamond',Georgia,serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--serif);font-size:18px;line-height:1.7;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(17,17,17,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:52px 2rem 0;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.035}
+.hero-bg svg{width:100%;height:100%}
+.hero-wrap{max-width:1080px;margin:0 auto;width:100%;display:flex;align-items:center;gap:5rem}
+.hero-photo{flex-shrink:0}
+.hero-photo img{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:top;filter:grayscale(100%) contrast(1.1);border:1px solid var(--border)}
+.hero-text{flex:1}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.hero-text h1{font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;margin-bottom:.6rem}
+.hero-text h1 em{font-style:italic;color:var(--red)}
+.hero-sub{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:1.4rem}
+.hero-desc{max-width:500px;color:#999;font-size:.95rem;margin-bottom:2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem}
+.btn{padding:.45rem 1.1rem;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;display:inline-block}
+.btn:hover,.btn-p{border-color:var(--accent);color:var(--accent)}
+.btn-p:hover{background:var(--accent);color:var(--bg)}
+.btn-r:hover{border-color:var(--red);color:var(--red)}
+
+/* ── SHARED SECTION ── */
+section{padding:5rem 2rem}
+.sec-inner{max-width:1080px;margin:0 auto}
+.sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:block}
+h2.sec-h{font-size:1.9rem;font-weight:400;margin-bottom:.4rem}
+.sec-sub{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:3rem}
+hr.div{border:none;border-top:1px solid var(--border);max-width:1080px;margin:0 auto}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2rem}
+.about-grid p{color:#999;font-size:.95rem;margin-bottom:.9rem}
+.pull{border-left:2px solid var(--accent);padding:1rem 1.4rem;margin:1.5rem 0;color:#bbb;font-style:italic;font-size:.95rem;background:var(--bg2)}
+.tags{margin-top:1.8rem}
+.tags h3{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
+.tag{display:inline-block;padding:.2rem .65rem;border:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--muted);margin:.2rem .2rem 0 0;transition:all .2s;cursor:default}
+.tag:hover{border-color:var(--accent);color:var(--accent)}
+.cv-row{margin-top:2rem;display:flex;flex-direction:column;gap:.5rem}
+.cv-item{font-family:var(--mono);font-size:12px;color:var(--muted);border-left:1px solid var(--border);padding-left:1rem}
+.cv-item strong{color:var(--text);display:block}
+
+/* ── TOPICS ── */
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1px;background:var(--border)}
+.t-card{background:var(--bg);padding:2rem;cursor:pointer;transition:background .2s;position:relative}
+.t-card:hover{background:var(--bg3)}
+.t-num{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:.8rem;letter-spacing:.08em}
+.t-card h3{font-size:1.05rem;font-weight:400;margin-bottom:.4rem}
+.t-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+.t-count{position:absolute;top:1.5rem;right:1.5rem;font-family:var(--mono);font-size:10px;color:var(--border)}
+
+/* ── NOTES ── */
+.filter-bar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.fb{padding:.3rem .85rem;border:1px solid var(--border);background:none;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.08em;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.fb:hover,.fb.on{border-color:var(--accent);color:var(--accent)}
+.notes-list{border:1px solid var(--border)}
+.ni{display:flex;justify-content:space-between;align-items:flex-start;padding:1.4rem 1.8rem;border-bottom:1px solid var(--border);transition:background .2s;text-decoration:none;color:inherit}
+.ni:last-child{border-bottom:none}
+.ni:hover{background:var(--bg3)}
+.ni-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:.3rem}
+.ni-title{font-size:1rem;margin-bottom:.25rem}
+.ni-desc{font-size:.82rem;color:var(--muted)}
+.ni-tag{display:inline-block;padding:.1rem .45rem;background:var(--bg2);border:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:.4rem;margin-right:.25rem}
+.ni-right{text-align:right;flex-shrink:0;margin-left:2rem;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.ni-right .dl{color:var(--accent);display:block;margin-top:.4rem;font-size:10px}
+
+/* ── RESEARCH ── */
+.research-wrap{display:flex;gap:3rem;align-items:flex-start}
+.research-text{flex:1}
+.ri{border:1px solid var(--border);padding:1.8rem;margin-bottom:1px;transition:background .2s}
+.ri:hover{background:var(--bg3)}
+.ri-status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .55rem;border:1px solid;display:inline-block;margin-bottom:.9rem}
+.s-active{border-color:var(--accent);color:var(--accent)}
+.s-past{border-color:var(--border);color:var(--muted)}
+.ri h3{font-size:1.05rem;font-weight:400;margin-bottom:.4rem}
+.ri p{font-size:.85rem;color:#888;line-height:1.65}
+.graph-side{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.graph-side svg{width:260px;height:260px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.7))}
+.graph-cap{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.05em}
+
+/* graph animations */
+.be{fill:none;stroke:#333;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.graph-side circle{fill:var(--accent);stroke:var(--bg);stroke-width:1.5;opacity:0;transition:opacity .3s}
+.graph-side circle.show{opacity:1}
+.cyc{stroke:var(--red);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+/* ── RECREATIONAL ── */
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border)}
+.rc{background:var(--bg);padding:1.8rem;cursor:pointer;transition:background .2s}
+.rc:hover{background:var(--bg3)}
+.rc-date{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:.6rem}
+.rc h3{font-size:1rem;font-weight:400;margin-bottom:.6rem;line-height:1.4}
+.rc p{font-size:.85rem;color:#777;line-height:1.6}
+.rm{display:inline-block;margin-top:1rem;font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none}
+.rm:hover{text-decoration:underline}
+
+/* ── TUTORING ── */
+.tut-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.tut-grid p{color:#999;font-size:.95rem;margin-bottom:1rem}
+.plat-list{list-style:none;margin:1.5rem 0;display:flex;flex-direction:column;gap:.5rem}
+.plat-list li a{color:var(--text);text-decoration:none;font-family:var(--mono);font-size:13px;border-bottom:1px solid var(--border);padding-bottom:.5rem;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+.plat-list li a:hover{color:var(--accent)}
+.plat-list li a::after{content:'→';color:var(--muted)}
+.subjects{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:1rem}
+
+/* ── CONTACT ── */
+#contact .contact-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
+#contact h2{font-size:2.2rem;font-weight:400}
+#contact p{color:var(--muted);font-size:.9rem;margin-top:.4rem}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media(max-width:720px){
+  .hero-wrap,.about-grid,.tut-grid,.research-wrap{flex-direction:column;grid-template-columns:1fr;gap:2rem}
+  .graph-side{display:none}
+  .ni{flex-direction:column}.ni-right{text-align:left;margin-left:0}
+  #contact .contact-inner{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<div class="tabs" id="tabs"></div>
-<div class="toolbar"><span class="filename" id="fname"></span><button class="copy-btn" id="copyBtn" onclick="copyFile()">Copy file</button></div>
-<div id="panes"></div>
 
-<script>
-const files = {
-  'index.html': `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Sachal Abdullah | Mathematics</title>
-  <link rel="stylesheet" href="/sachal.github.io/assets/main.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Sachal Abdullah | Mathematics"/>
-  <meta property="og:description" content="Research in Graph Theory and Combinatorics."/>
-  <meta property="og:image" content="https://theoryculture.github.io/sachal.github.io/assets/images/thumbnail.png"/>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#111;--border:#2a2a2a;--text:#e8e6e0;--muted:#666;--accent:#9b59ff;--red:#ff6b6b;--serif:'EB Garamond',Georgia,serif;--mono:'JetBrains Mono',monospace}
-    body{background:var(--bg);color:var(--text);font-family:var(--serif);font-size:18px;line-height:1.7;overflow-x:hidden}
-    nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(17,17,17,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-    .nav-inner{max-width:1080px;margin:0 auto;padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-decoration:none}
-    .nav-links{display:flex;gap:1.8rem;list-style:none}
-    .nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--text)}
-    .hero{min-height:100vh;display:flex;align-items:center;padding:52px 2rem 0;position:relative;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.035}
-    .hero-bg svg{width:100%;height:100%}
-    .hero-wrap{max-width:1080px;margin:0 auto;width:100%;display:flex;align-items:center;gap:5rem}
-    .hero-photo img{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:top;filter:grayscale(100%) contrast(1.1);border:1px solid var(--border)}
-    .label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
-    h1{font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;margin-bottom:.6rem}
-    h1 em{font-style:italic;color:var(--red)}
-    .sub{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:1.4rem}
-    .desc{max-width:500px;color:#999;font-size:.95rem;margin-bottom:2rem}
-    .btns{display:flex;flex-wrap:wrap;gap:.6rem}
-    .btn{padding:.45rem 1.1rem;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;display:inline-block}
-    .btn:hover{border-color:var(--accent);color:var(--accent)}
-    .btn-p{border-color:var(--accent);color:var(--accent)}
-    .btn-p:hover{background:var(--accent);color:var(--bg)}
-    .nav-cards{max-width:1080px;margin:0 auto;padding:6rem 2rem 4rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border)}
-    .nav-card{background:var(--bg);padding:2rem 1.8rem;text-decoration:none;color:inherit;transition:background .2s;display:block}
-    .nav-card:hover{background:#1a1a1a}
-    .nav-card .nc-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
-    .nav-card h2{font-size:1.2rem;font-weight:400;margin-bottom:.3rem}
-    .nav-card p{font-size:.82rem;color:var(--muted);line-height:1.5}
-    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted)}
-    @media(max-width:700px){.hero-wrap{flex-direction:column;gap:2rem}.nav-links{display:none}}
-  </style>
-</head>
-<body>
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/sachal.github.io/" class="nav-logo">Sachal Abdullah</a>
+    <span class="nav-logo">Sachal Abdullah</span>
     <ul class="nav-links">
-      <li><a href="/sachal.github.io/about">About</a></li>
-      <li><a href="/sachal.github.io/mathematics">Topics</a></li>
-      <li><a href="/sachal.github.io/research">Research</a></li>
-      <li><a href="/sachal.github.io/tutorings">Tutoring</a></li>
-      <li><a href="/sachal.github.io/contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#tutoring">Tutoring</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-<section class="hero">
+<!-- HERO -->
+<section id="hero">
+  <!-- subtle background graph -->
   <div class="hero-bg">
-    <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
-      <g stroke="#fff" stroke-width="1" fill="none">
+    <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" opacity=".6">
+      <g stroke="#ffffff" stroke-width="1" fill="none">
+        <!-- scattered graph-like background lines -->
         <circle cx="100" cy="120" r="4" fill="#fff" stroke="none"/>
         <circle cx="320" cy="80" r="4" fill="#fff" stroke="none"/>
         <circle cx="560" cy="200" r="4" fill="#fff" stroke="none"/>
@@ -109,62 +190,266 @@ const files = {
         <circle cx="680" cy="360" r="4" fill="#fff" stroke="none"/>
         <circle cx="900" cy="450" r="4" fill="#fff" stroke="none"/>
         <circle cx="1100" cy="350" r="4" fill="#fff" stroke="none"/>
+        <circle cx="150" cy="560" r="4" fill="#fff" stroke="none"/>
+        <circle cx="380" cy="620" r="4" fill="#fff" stroke="none"/>
+        <circle cx="750" cy="580" r="4" fill="#fff" stroke="none"/>
         <line x1="100" y1="120" x2="320" y2="80"/><line x1="320" y1="80" x2="560" y2="200"/>
         <line x1="560" y1="200" x2="800" y2="100"/><line x1="800" y1="100" x2="1050" y2="180"/>
         <line x1="100" y1="120" x2="200" y2="340"/><line x1="320" y1="80" x2="450" y2="420"/>
         <line x1="560" y1="200" x2="680" y2="360"/><line x1="800" y1="100" x2="900" y2="450"/>
         <line x1="1050" y1="180" x2="1100" y2="350"/><line x1="200" y1="340" x2="450" y2="420"/>
         <line x1="450" y1="420" x2="680" y2="360"/><line x1="680" y1="360" x2="900" y2="450"/>
+        <line x1="900" y1="450" x2="1100" y2="350"/><line x1="200" y1="340" x2="150" y2="560"/>
+        <line x1="450" y1="420" x2="380" y2="620"/><line x1="680" y1="360" x2="750" y2="580"/>
+        <line x1="150" y1="560" x2="380" y2="620"/><line x1="380" y1="620" x2="750" y2="580"/>
       </g>
     </svg>
   </div>
   <div class="hero-wrap">
     <div class="hero-photo">
-      <img src="/sachal.github.io/assets/images/profile.jpg" alt="Sachal Abdullah"/>
+      <img src="https://theoryculture.github.io/sachal.github.io/assets/images/profile.jpg"
+           alt="Sachal Abdullah"/>
     </div>
     <div class="hero-text">
       <span class="label">Mathematics</span>
       <h1>Sachal<br><em>Abdullah</em></h1>
-      <p class="sub">Graph Theory · Combinatorics · Recreational Mathematics</p>
-      <p class="desc">Researching uniquely Hamiltonian graphs at Charles University, Prague. Notes, lectures, and writings for the curious.</p>
+      <p class="hero-sub">Graph Theory · Combinatorics · Recreational Mathematics</p>
+      <p class="hero-desc">
+        Researching uniquely Hamiltonian graphs and discrete structures at Charles University, Prague.
+        Notes, lectures, and writings for the curious — from rigorous proofs to recreational puzzles.
+      </p>
       <div class="btns">
-        <a href="/sachal.github.io/mathematics" class="btn btn-p">Topics</a>
-        <a href="/sachal.github.io/research" class="btn">Research</a>
+        <a href="/sachal.github.io/mathematics" class="btn btn-p">Notes &amp; Lectures</a>
+        <a href="/sachal.github.io/research" class="btn btn-r">Research</a>
         <a href="/sachal.github.io/tutorings" class="btn">Tutoring</a>
-        <a href="/sachal.github.io/assets/cv.pdf" class="btn" target="_blank">CV</a>
+        <a href="assets/cv.pdf" class="btn" target="_blank">CV</a>
       </div>
     </div>
   </div>
 </section>
 
-<div class="nav-cards">
-  <a href="/sachal.github.io/about" class="nav-card">
-    <div class="nc-label">01</div>
-    <h2>About</h2>
-    <p>Background, interests, and experience</p>
-  </a>
-  <a href="/sachal.github.io/mathematics" class="nav-card">
-    <div class="nc-label">02</div>
-    <h2>Topics</h2>
-    <p>Graph Theory notes and lectures</p>
-  </a>
-  <a href="/sachal.github.io/research" class="nav-card">
-    <div class="nc-label">03</div>
-    <h2>Research</h2>
-    <p>Uniquely Hamiltonian graphs</p>
-  </a>
-  <a href="/sachal.github.io/tutorings" class="nav-card">
-    <div class="nc-label">04</div>
-    <h2>Tutoring</h2>
-    <p>Lessons and problem solving</p>
-  </a>
-  <a href="/sachal.github.io/contact" class="nav-card">
-    <div class="nc-label">05</div>
-    <h2>Contact</h2>
-    <p>Get in touch</p>
-  </a>
-</div>
+<hr class="div"/>
 
-<footer>Sachal Abdullah · Charles University, Prague</footer>
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-inner">
+    <span class="sec-label">About</span>
+    <div class="about-grid">
+      <div>
+        <h2 class="sec-h">Who I Am</h2>
+        <p>I'm a mathematician and computer scientist studying at the Department of Mathematics and Physics, Charles University, Prague, with a research focus in Graph Theory — specifically the existence and uniqueness of Hamiltonian cycles.</p>
+        <p>I was previously at Forman Christian College, Lahore, where I worked on Game Theory and AI. I've taught mathematics at the International School of Prague, lectured at the Czech MENSA Summer Camp, and tutored university and high school students since 2018.</p>
+        <div class="pull">
+          Exploring Sheehan's Conjecture: do uniquely Hamiltonian regular graphs exist? Extending Fleischner's construction via the Blanuša snark.
+        </div>
+        <p>Beyond research, I write about recreational mathematics — the playful, surprising, and counterintuitive side of the subject.</p>
+      </div>
+      <div>
+        <div class="tags">
+          <h3>Mathematical Interests</h3>
+          <span class="tag">Graph Theory</span>
+          <span class="tag">Hamiltonian Cycles</span>
+          <span class="tag">Combinatorics</span>
+          <span class="tag">Discrete Mathematics</span>
+          <span class="tag">Linear Algebra</span>
+          <span class="tag">Analysis</span>
+          <span class="tag">Number Theory</span>
+          <span class="tag">Recreational Math</span>
+          <span class="tag">Logic</span>
+          <span class="tag">Calculus</span>
+        </div>
+        <div class="cv-row" style="margin-top:2rem">
+          <h3 style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem">Selected Experience</h3>
+          <div class="cv-item"><strong>Guest Lecturer — Czech MENSA Summer Camp, 2024</strong>Graph Theory · Problem Solving</div>
+          <div class="cv-item"><strong>Substitute Teacher — Int'l School of Prague, 2025</strong>Middle School Mathematics</div>
+          <div class="cv-item"><strong>EuroComb 2021</strong>Participant</div>
+          <div class="cv-item"><strong>Private Tutor — Mathematics, 2018–</strong>High school &amp; university level</div>
+        </div>
+        <div style="margin-top:1.5rem;display:flex;gap:.5rem;flex-wrap:wrap">
+          <a href="assets/cv.pdf" class="btn btn-p" target="_blank">Full CV</a>
+          <a href="https://medium.com/aude-sapere" class="btn" target="_blank">Philosophy Blog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- TOPICS -->
+<section id="topics">
+  <div class="sec-inner">
+    <span class="sec-label">Browse by Area</span>
+    <h2 class="sec-h">Topics</h2>
+    <p class="sec-sub">Notes and writings organised by subject</p>
+    <div class="topics-grid" style="max-width:360px">
+      <a href="/sachal.github.io/graph-theory" class="t-card" style="text-decoration:none;color:inherit">
+        <div class="t-num">01 — GRAPH THEORY</div>
+        <h3>Graph Theory</h3>
+        <p>Hamiltonian cycles, planar graphs, graph coloring, and structural theorems. Core to my research.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<hr class="div"/>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="sec-inner">
+    <span class="sec-label">Research</span>
+    <h2 class="sec-h">Research</h2>
+    <p class="sec-sub">Graph Theory · Combinatorics · Discrete Mathematics</p>
+    <div class="research-wrap">
+      <div class="research-text">
+        <div class="ri">
+          <span class="ri-status s-active">Active</span>
+          <h3>Uniquely Hamiltonian Graphs</h3>
+          <p>Exploring Sheehan's Conjecture on the nonexistence of uniquely Hamiltonian regular graphs. Extends Fleischner's construction using the Blanuša snark, and critically analyses how cycle decompositions affect uniqueness of Hamiltonian cycles. Presented at EuroComb 2021.</p>
+        </div>
+
+      </div>
+      <!-- Dodecahedral graph (your existing SVG from research.html) -->
+      <div class="graph-side">
+        <svg viewBox="0 0 400 400">
+          <polygon class="be" pathLength="1" points="200,20 371,144 306,346 94,346 29,144"/>
+          <polygon class="be" pathLength="1" points="200,80 241,143 314,163 267,222 271,297 200,270 129,297 133,222 86,163 159,143"/>
+          <polygon class="be" pathLength="1" points="218,176 229,209 200,230 171,209 182,176"/>
+          <line class="be" pathLength="1" x1="200" y1="20" x2="200" y2="80"/>
+          <line class="be" pathLength="1" x1="371" y1="144" x2="314" y2="163"/>
+          <line class="be" pathLength="1" x1="306" y1="346" x2="271" y2="297"/>
+          <line class="be" pathLength="1" x1="94" y1="346" x2="129" y2="297"/>
+          <line class="be" pathLength="1" x1="29" y1="144" x2="86" y2="163"/>
+          <line class="be" pathLength="1" x1="241" y1="143" x2="218" y2="176"/>
+          <line class="be" pathLength="1" x1="267" y1="222" x2="229" y2="209"/>
+          <line class="be" pathLength="1" x1="200" y1="270" x2="200" y2="230"/>
+          <line class="be" pathLength="1" x1="133" y1="222" x2="171" y2="209"/>
+          <line class="be" pathLength="1" x1="159" y1="143" x2="182" y2="176"/>
+          <circle cx="200" cy="20" r="5"/><circle cx="371" cy="144" r="5"/><circle cx="306" cy="346" r="5"/>
+          <circle cx="94" cy="346" r="5"/><circle cx="29" cy="144" r="5"/><circle cx="200" cy="80" r="5"/>
+          <circle cx="314" cy="163" r="5"/><circle cx="271" cy="297" r="5"/><circle cx="129" cy="297" r="5"/>
+          <circle cx="86" cy="163" r="5"/><circle cx="241" cy="143" r="5"/><circle cx="267" cy="222" r="5"/>
+          <circle cx="200" cy="270" r="5"/><circle cx="133" cy="222" r="5"/><circle cx="159" cy="143" r="5"/>
+          <circle cx="218" cy="176" r="5"/><circle cx="229" cy="209" r="5"/><circle cx="200" cy="230" r="5"/>
+          <circle cx="171" cy="209" r="5"/><circle cx="182" cy="176" r="5"/>
+          <polyline class="cyc" pathLength="1" points="200,20 29,144 94,346 129,297 200,270 271,297 306,346 371,144 314,163 267,222 229,209 200,230 171,209 133,222 86,163 159,143 182,176 218,176 241,143 200,80 200,20"/>
+        </svg>
+        <span class="graph-cap">Dodecahedral graph · Hamiltonian cycle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<hr class="div"/>
+
+<!-- TUTORING -->
+<section id="tutoring">
+  <div class="sec-inner">
+    <span class="sec-label">Tutoring</span>
+    <h2 class="sec-h">Tutoring &amp; Teaching</h2>
+    <p class="sec-sub">University, high school, and problem-solving sessions</p>
+    <div class="tut-grid">
+      <div>
+        <p>I offer tutoring in middle school, high school, and university-level mathematics — from foundations to advanced topics. In addition to structured lessons, I run problem-solving discussions on whatever topic you want to explore.</p>
+        <p>B.Sc. Computer Science · Advanced Mathematics Research · University Teaching Assistant · MENSA Guest Lecturer.</p>
+        <ul class="plat-list">
+          <li><a href="https://www.superprof.cz/ir/38480826-d93997" target="_blank">Superprof</a></li>
+          <li><a href="https://www.teacheron.com/user/tDashboard" target="_blank">Preply</a></li>
+          <li><a href="https://www.teacheron.com/tutor/cZp4" target="_blank">TeacherOn</a></li>
+        </ul>
+        <p style="font-size:.9rem">Not on any platform? <a href="mailto:sachalabdullah10@gmail.com" style="color:var(--accent);text-decoration:none">Email me directly →</a></p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem">Subjects I Teach</h3>
+        <div class="subjects">
+          <span class="tag">Graph Theory</span>
+          <span class="tag">Linear Algebra</span>
+          <span class="tag">Calculus</span>
+          <span class="tag">Analysis</span>
+          <span class="tag">Combinatorics</span>
+          <span class="tag">Discrete Maths</span>
+          <span class="tag">Logic</span>
+          <span class="tag">Algebra</span>
+          <span class="tag">Number Theory</span>
+          <span class="tag">Homework Help</span>
+          <span class="tag">Exam Prep</span>
+        </div>
+        <div style="margin-top:2rem">
+          <img src="https://theoryculture.github.io/sachal.github.io/assets/images/poster.png"
+               alt="Tutoring Poster"
+               style="max-width:100%;border:1px solid var(--border);border-radius:4px"
+               onerror="this.style.display='none'"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-inner">
+    <div class="contact-inner">
+      <div>
+        <span class="sec-label">Contact</span>
+        <h2>Get in Touch</h2>
+        <p>Mathematics, tutoring, research, or just a good problem.</p>
+      </div>
+      <div class="btns">
+        <a href="mailto:sachalabdullah10@gmail.com" class="btn btn-p">sachalabdullah10@gmail.com</a>
+        <a href="assets/cv.pdf" class="btn" target="_blank">CV</a>
+        <a href="https://medium.com/aude-sapere" class="btn" target="_blank">Philosophy Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://theoryculture.github.io/sachal.github.io/">Sachal Abdullah</a>
+  &nbsp;·&nbsp; Mathematics &nbsp;·&nbsp; Charles University, Prague
+</footer>
+
+<script>
+// Hamiltonian cycle animation via JS
+(function(){
+  function animatePath(el, duration, delay){
+    const len = el.getTotalLength ? el.getTotalLength() : 1000;
+    el.style.strokeDasharray = len;
+    el.style.strokeDashoffset = len;
+    el.style.transition = 'none';
+    setTimeout(()=>{
+      el.style.transition = `stroke-dashoffset ${duration}ms ease`;
+      el.style.strokeDashoffset = 0;
+    }, delay);
+  }
+  window.addEventListener('load', ()=>{
+    document.querySelectorAll('.be').forEach((el,i)=>animatePath(el,1500,i*60));
+    setTimeout(()=>{
+      document.querySelectorAll('.graph-side circle').forEach(c=>c.classList.add('show'));
+    }, 2200);
+    const cyc = document.querySelector('.cyc');
+    if(cyc) animatePath(cyc, 2500, 2600);
+  });
+})();
+
+function filt(c,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.ni').forEach(n=>{
+    n.style.display=(c==='all'||n.dataset.c===c)?'flex':'none';
+  });
+}
+// nav scroll highlight
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':''});
+},{passive:true});
+</script>
 </body>
 </html>
