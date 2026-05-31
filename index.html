@@ -286,114 +286,16 @@ footer a:hover{color:var(--text)}
     <span class="sec-label">Browse by Area</span>
     <h2 class="sec-h">Topics</h2>
     <p class="sec-sub">Notes and writings organised by subject</p>
-    <div class="topics-grid">
+    <div class="topics-grid" style="max-width:360px">
       <a href="/sachal.github.io/graph-theory" class="t-card" style="text-decoration:none;color:inherit">
         <div class="t-num">01 — GRAPH THEORY</div>
         <h3>Graph Theory</h3>
         <p>Hamiltonian cycles, planar graphs, graph coloring, and structural theorems. Core to my research.</p>
       </a>
-      <a href="/sachal.github.io/linear-algebra" class="t-card" style="text-decoration:none;color:inherit">
-        <div class="t-num">02 — LINEAR ALGEBRA</div>
-        <h3>Linear Algebra</h3>
-        <p>Vector spaces, eigenvalues, matrix decompositions, spectral methods.</p>
-      </a>
-      <div class="t-card">
-        <div class="t-num">03 — COMBINATORICS</div>
-        <h3>Combinatorics</h3>
-        <p>Counting, generating functions, Ramsey theory, and extremal combinatorics.</p>
-      </div>
-      <div class="t-card">
-        <div class="t-num">04 — ANALYSIS</div>
-        <h3>Real Analysis</h3>
-        <p>Limits, continuity, differentiation, and measure-theoretic foundations.</p>
-      </div>
-      <div class="t-card">
-        <div class="t-num">05 — NUMBER THEORY</div>
-        <h3>Number Theory</h3>
-        <p>Primes, modular arithmetic, Diophantine equations, and analytic methods.</p>
-      </div>
-      <div class="t-card">
-        <div class="t-num">06 — LOGIC & DISCRETE</div>
-        <h3>Logic &amp; Discrete Maths</h3>
-        <p>Propositional and predicate logic, set theory, and discrete structures.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<hr class="div"/>
-
-<!-- NOTES -->
-<section id="notes">
-  <div class="sec-inner">
-    <span class="sec-label">Lecture Notes &amp; Writings</span>
-    <h2 class="sec-h">Notes</h2>
-    <p class="sec-sub">Formal write-ups, lecture notes, and problem sets</p>
-    <div class="filter-bar">
-      <button class="fb on" onclick="filt('all',this)">All</button>
-      <button class="fb" onclick="filt('gt',this)">Graph Theory</button>
-      <button class="fb" onclick="filt('la',this)">Linear Algebra</button>
-      <button class="fb" onclick="filt('co',this)">Combinatorics</button>
-      <button class="fb" onclick="filt('an',this)">Analysis</button>
-    </div>
-    <div class="notes-list">
-      <a class="ni" href="/sachal.github.io/graph-theory" data-c="gt">
-        <div>
-          <div class="ni-meta">Graph Theory · Lecture Notes</div>
-          <div class="ni-title">What is a Graph? — Foundations</div>
-          <div class="ni-desc">Formal definition \(G=(V,E)\), degree sequences, subgraphs, and basic properties.</div>
-          <span class="ni-tag">Introductory</span>
-        </div>
-        <div class="ni-right"><span>2024</span><span class="dl">Read →</span></div>
-      </a>
-      <a class="ni" href="/sachal.github.io/graph-theory" data-c="gt">
-        <div>
-          <div class="ni-meta">Graph Theory · Lecture Notes</div>
-          <div class="ni-title">Hamiltonian and Eulerian Graphs</div>
-          <div class="ni-desc">Cycles visiting every vertex vs every edge exactly once. Dirac's and Ore's sufficient conditions.</div>
-          <span class="ni-tag">Intermediate</span>
-        </div>
-        <div class="ni-right"><span>2024</span><span class="dl">Read →</span></div>
-      </a>
-      <a class="ni" href="#" data-c="gt">
-        <div>
-          <div class="ni-meta">Graph Theory · Research Notes</div>
-          <div class="ni-title">Uniquely Hamiltonian Graphs and Sheehan's Conjecture</div>
-          <div class="ni-desc">Construction via the Blanuša snark. Which regular graph classes cannot be uniquely Hamiltonian?</div>
-          <span class="ni-tag">Advanced</span><span class="ni-tag">Research</span>
-        </div>
-        <div class="ni-right"><span>2024</span><span class="dl">↓ PDF</span></div>
-      </a>
-      <a class="ni" href="/sachal.github.io/linear-algebra" data-c="la">
-        <div>
-          <div class="ni-meta">Linear Algebra · Lecture Notes</div>
-          <div class="ni-title">Spectral Theorem and Symmetric Matrices</div>
-          <div class="ni-desc">Eigendecomposition of real symmetric matrices, orthogonal diagonalisation, and applications to graphs.</div>
-          <span class="ni-tag">Intermediate</span>
-        </div>
-        <div class="ni-right"><span>2023</span><span class="dl">Read →</span></div>
-      </a>
-      <a class="ni" href="#" data-c="co">
-        <div>
-          <div class="ni-meta">Combinatorics · Notes</div>
-          <div class="ni-title">Generating Functions and Recurrence Relations</div>
-          <div class="ni-desc">Ordinary and exponential generating functions. Solving linear recurrences and counting combinatorial objects.</div>
-          <span class="ni-tag">Intermediate</span>
-        </div>
-        <div class="ni-right"><span>2023</span><span class="dl">↓ PDF</span></div>
-      </a>
-      <a class="ni" href="#" data-c="an">
-        <div>
-          <div class="ni-meta">Real Analysis · Notes</div>
-          <div class="ni-title">Uniform Continuity and the Heine–Cantor Theorem</div>
-          <div class="ni-desc">Distinguishing pointwise from uniform continuity. Compactness as the key bridge.</div>
-          <span class="ni-tag">Advanced</span>
-        </div>
-        <div class="ni-right"><span>2023</span><span class="dl">↓ PDF</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 
 <hr class="div"/>
 
@@ -410,21 +312,7 @@ footer a:hover{color:var(--text)}
           <h3>Uniquely Hamiltonian Graphs</h3>
           <p>Exploring Sheehan's Conjecture on the nonexistence of uniquely Hamiltonian regular graphs. Extends Fleischner's construction using the Blanuša snark, and critically analyses how cycle decompositions affect uniqueness of Hamiltonian cycles. Presented at EuroComb 2021.</p>
         </div>
-        <div class="ri">
-          <span class="ri-status s-active">Active</span>
-          <h3>Spectral Methods and Hamiltonicity</h3>
-          <p>How do eigenvalues of the adjacency and Laplacian matrices encode structural properties — connectivity, expansion, and the presence of long cycles? Connecting linear-algebraic methods to combinatorial conditions for Hamiltonicity.</p>
-        </div>
-        <div class="ri">
-          <span class="ri-status s-past">Past</span>
-          <h3>Hadwiger–Debrunner \((p,q)\)-Problem</h3>
-          <p>Explored fractional Helly-type theorems and the combinatorial geometry of convex sets. Research assistant work at ITU, Lahore, 2018–19.</p>
-        </div>
-        <div class="ri">
-          <span class="ri-status s-past">Past</span>
-          <h3>Traffic Regulation via Game Theory</h3>
-          <p>Intelligent traffic light system using Game Theory, Markov Models, and Reinforcement Learning to dynamically reduce congestion. Applied project at Forman Christian College.</p>
-        </div>
+
       </div>
       <!-- Dodecahedral graph (your existing SVG from research.html) -->
       <div class="graph-side">
@@ -457,54 +345,6 @@ footer a:hover{color:var(--text)}
   </div>
 </section>
 
-<hr class="div"/>
-
-<!-- RECREATIONAL -->
-<section id="recreational">
-  <div class="sec-inner">
-    <span class="sec-label">Recreational Mathematics</span>
-    <h2 class="sec-h">For the Curious</h2>
-    <p class="sec-sub">Short essays, puzzles, and mathematical curiosities</p>
-    <div class="rec-grid">
-      <div class="rc">
-        <div class="rc-date">2025</div>
-        <h3>Why Does \(e^{i\pi}+1=0\) Feel Like a Magic Trick?</h3>
-        <p>Euler's identity connects five fundamental constants. But what does it actually say, geometrically, about rotation in the complex plane?</p>
-        <a href="#" class="rm">Read →</a>
-      </div>
-      <div class="rc">
-        <div class="rc-date">2025</div>
-        <h3>The Seven Bridges of Königsberg</h3>
-        <p>Euler's 1736 solution to an impossible walk turned a recreational puzzle into an entire branch of mathematics. A walk through the birth of graph theory.</p>
-        <a href="#" class="rm">Read →</a>
-      </div>
-      <div class="rc">
-        <div class="rc-date">2024</div>
-        <h3>Infinity Is Not a Number — But Which Infinity?</h3>
-        <p>Cantor's diagonal argument shows some infinities are strictly larger than others. A tour through \(\aleph_0\), \(\mathfrak{c}\), and beyond.</p>
-        <a href="#" class="rm">Read →</a>
-      </div>
-      <div class="rc">
-        <div class="rc-date">2024</div>
-        <h3>The Collatz Conjecture: Totally Open</h3>
-        <p>Pick a number. Halve it if even, triple-and-add-one if odd. Repeat. Does it always reach 1? Nobody knows. The problem is deceptively simple.</p>
-        <a href="#" class="rm">Read →</a>
-      </div>
-      <div class="rc">
-        <div class="rc-date">2024</div>
-        <h3>Graph Colouring and the Four Colour Theorem</h3>
-        <p>Can every map be coloured with four colours so no adjacent regions share a colour? The computer-assisted proof surprised the entire mathematical world.</p>
-        <a href="#" class="rm">Read →</a>
-      </div>
-      <div class="rc">
-        <div class="rc-date">2024</div>
-        <h3>Primes and the Sieve of Eratosthenes Revisited</h3>
-        <p>A fresh look at an ancient algorithm — and what it reveals about the surprising distribution of prime numbers.</p>
-        <a href="#" class="rm">Read →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <hr class="div"/>
 
